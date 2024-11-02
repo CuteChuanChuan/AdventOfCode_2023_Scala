@@ -1,7 +1,7 @@
 import scala.io.Source
 import scala.util.Using
 
-object Day1Problem1 {
+object Day01 {
   
   private val wordToDigit: Map[String, Int] = Map(
     "one" -> 1,
@@ -38,11 +38,7 @@ object Day1Problem1 {
   }
   
   def main(args: Array[String]): Unit = {
-    if (args.length != 1) {
-      println("Please provide the path of the input file")
-      sys.exit(1)
-    }
-    val filePath = args(0)
+    val filePath = CommonUtils.getFilePathOrThrowException(args)
     
     val totalSum = Using.resource(Source.fromFile(filePath)) { source =>
       source.getLines().flatMap(getCalibrationValue).sum
